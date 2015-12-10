@@ -2,7 +2,6 @@ import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "massshootingdata.settings")
 
-
 import csv
 from django.db import models
 from eventsdb.models import *
@@ -21,5 +20,6 @@ with open('../toparse.csv', 'rb') as csvread:
 		city = locArray[0]
 		state = locArray[1]
 		print str(total) + " killed or injured in " + state + " by " + shooter #String casting was a necessity to make acceptable output since the variables were cast as int literals.
+
 		location = Location(city = city, state = state)
 		location.save()

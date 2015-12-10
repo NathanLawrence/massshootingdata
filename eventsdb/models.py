@@ -8,6 +8,9 @@ class Location(models.Model):
 	city = models.CharField(max_length = 100)
 	state = models.CharField(max_length = 2)
 
+	def __str__(self):
+		return self.city + ", " + self.state
+
 class Event(models.Model):
 	slug = models.SlugField()
 	location = models.ForeignKey(Location)
@@ -15,6 +18,9 @@ class Event(models.Model):
 	dead = models.IntegerField()
 	injured = models.IntegerField()
 	description = models.TextField(null = True)
+
+	def __str__(self):
+		return self.date + " - " + self.location
 
 class Article(models.Model):
 	headline  = models.CharField(max_length  = 200)
