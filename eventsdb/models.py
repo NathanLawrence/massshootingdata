@@ -8,10 +8,12 @@ class Location(models.Model):
 	city = models.CharField(max_length = 100)
 	state = models.CharField(max_length = 2)
 
-class Shooter(models.Model):
-	name = models.Charfield(max_length = 150)
-	description = models.TextField(null = True)
-	event = models.ForeignKey(Event)
+class Event(models.Model):
+	slug = models.SlugField()
+	location = models.ForeignKey(Location)
+	date = models.DateTimeField('shooting date')
+	dead = models.IntegerField()
+	injured = models.IntegerField()
 
 class Article(models.Model):
 	headline  = models.CharField(max_length  = 200)
@@ -19,12 +21,10 @@ class Article(models.Model):
 	event = models.ForeignKey(Event)
 	url = models.URLField()
 
-class Event(models.Model):
-	slug = models.SlugField()
-	location = models.ForeignKey(Location)
-	date = models.DatetimeField('shooting date')
-	dead = models.IntegerField()
-	injured = models.IntegerField()
+class Shooter(models.Model):
+	name = models.CharField(max_length = 150)
+	description = models.TextField(null = True)
+	event = models.ForeignKey(Event)
 
 class Weapon(models.Model):
 	name = models.CharField(max_length = 150)
