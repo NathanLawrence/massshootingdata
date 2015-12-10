@@ -14,6 +14,7 @@ class Event(models.Model):
 	date = models.DateTimeField('shooting date')
 	dead = models.IntegerField()
 	injured = models.IntegerField()
+	description = models.TextField(null = True)
 
 class Article(models.Model):
 	headline  = models.CharField(max_length  = 200)
